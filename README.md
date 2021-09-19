@@ -7,7 +7,7 @@ This software simply turns on and off USB relays connected to the PC. You can th
 * A Supported USB Relay (see --> [List of relays](#relays-list))
 
 ## Installation 
-Use the lastest release MSI installer. Link to releases --> [Release](google.com)
+Use the lastest release MSI installer. Link to releases --> [Release](https://github.com/ArmlessMatt/AccessibleUsbRelay/releases)
 
 ## How to use the software
 ### The Relay List
