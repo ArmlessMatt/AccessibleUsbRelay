@@ -57,7 +57,7 @@ namespace UsbRelay.UI
             }
             var index = int.Parse(selected.Name.Remove(0, selected.Name.Length - 1));
             var relay = actionService.RelayActions[index];
-            CreateShortcut("Lancer relais " + relay.Name , Environment.GetFolderPath(Environment.SpecialFolder.Desktop), Assembly.GetExecutingAssembly().Location.Replace(".dll", ".exe"), relay.Guid, relay.DeviceName);
+            CreateShortcut("Lancer relais " + relay.Name , Environment.GetFolderPath(Environment.SpecialFolder.Desktop), AppContext.BaseDirectory + "UsbRelay.UI.exe", relay.Guid, relay.DeviceName);
         }
 
         private void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation, string guid, string deviceName)
