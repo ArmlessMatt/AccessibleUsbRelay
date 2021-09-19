@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UsbRelay.UI": {
+      "commandName": "Project",
+      "commandLineArgs": " guid=1ba4ee42-07c8-4b60-b917-953dae4353cf"
+    }
+  }
+}
