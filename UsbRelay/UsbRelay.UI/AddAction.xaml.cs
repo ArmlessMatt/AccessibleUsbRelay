@@ -71,6 +71,7 @@ namespace UsbRelay.UI
                 StartDelay = int.Parse(startDelay.Text),
                 Guid = Guid.NewGuid().ToString()
             };
+            relay.DeviceName = relay.Port.Remove(relay.Port.LastIndexOf(" "), relay.Port.Length - relay.Port.LastIndexOf(" ")).Replace(" ", "");
 
             actionService.AddRelay(relay);
             Navigator.Navigate("ActionList.xaml");

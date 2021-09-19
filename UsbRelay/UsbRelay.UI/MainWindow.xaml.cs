@@ -12,17 +12,18 @@ namespace UsbRelay.UI
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        
+    {  
         public MainWindow()
         {
             var args = Environment.GetCommandLineArgs().ToList();
             var shortcutArgs = args.FirstOrDefault(arg => arg.Contains("guid="));
+            var shortcutFallbackArgs = args.FirstOrDefault(arg => arg.Contains("devicename="));
             if (shortcutArgs != null)
             {
                 var guid = shortcutArgs.Replace("guid=", "");
+                var devicename = shortcutFallbackArgs.Replace("devicename=", "");
                 var service = new ActionService();
-                var relay = service.RelayActions.FirstOrDefault(re => re.Guid == guid);
+                var relay = service.RelayActions.FirstOrDefault(re => re.Guid == guid || re.DeviceName == devicename);
                 if (relay != null)
                 {
                     Task.Run(() => service.ExecuteActionAsync(relay.Name)).Wait();

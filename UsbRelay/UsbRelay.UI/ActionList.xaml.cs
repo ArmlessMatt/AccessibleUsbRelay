@@ -57,16 +57,16 @@ namespace UsbRelay.UI
             }
             var index = int.Parse(selected.Name.Remove(0, selected.Name.Length - 1));
             var relay = actionService.RelayActions[index];
-            CreateShortcut("Lancer relais " + relay.Name , Environment.GetFolderPath(Environment.SpecialFolder.Desktop), Assembly.GetExecutingAssembly().Location.Replace(".dll", ".exe"), relay.Guid);
+            CreateShortcut("Lancer relais " + relay.Name , Environment.GetFolderPath(Environment.SpecialFolder.Desktop), Assembly.GetExecutingAssembly().Location.Replace(".dll", ".exe"), relay.Guid, relay.DeviceName);
         }
 
-        private void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation, string guid)
+        private void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation, string guid, string deviceName)
         {
             string shortcutLocation = System.IO.Path.Combine(shortcutPath, shortcutName + ".lnk");
             WshShell shell = new WshShell();
             IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
 
-            shortcut.Arguments = "guid=" + guid;
+            shortcut.Arguments = "guid=" + guid + " " + "devicename=" + deviceName;
             shortcut.TargetPath = targetFileLocation;                 // The path of the file that will launch when the shortcut is run
             shortcut.Save();                                    // Save the shortcut
         }
