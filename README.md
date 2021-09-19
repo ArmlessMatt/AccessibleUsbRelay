@@ -4,10 +4,12 @@ This software simply turns on and off USB relays connected to the PC. You can th
 
 ## Requirements 
 * Windows 10
-* A Supported USB Relay (see --> [List of relays](#relays-list))
+* A Supported USB Relay (see --> [List of relays](#list-of-supported-relays))
 
 ## Installation 
-Use the lastest release MSI installer. Link to releases --> [Release](google.com)
+Link to releases --> [Release](https://github.com/ArmlessMatt/AccessibleUsbRelay/releases)
+* Unzip in a folder 
+* Run UsbRelayInstaller.exe
 
 ## How to use the software
 ### The Relay List
@@ -41,6 +43,5 @@ Click accept(accepter)
 
 This will create a shortcut on your desktop to call a certain relay (the one that was selected). When using the shortcut, only the relay will be called and no app will be shown.
 
-(#relays-list)
-## List Of Supported Relays
+# List Of Supported Relays
 * LCUS-1 (Unafiliated [Amazon link](https://www.amazon.ca/Intelligent-Control-Overcurrent-Protection-Freewheel/dp/B07RX7DKHW/ref=sr_1_5?dchild=1&keywords=usb+relay&qid=1632026160&sr=8-5))
