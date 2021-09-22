@@ -26,11 +26,6 @@ namespace UsbRelay.UI
 
         private void addAction_Click(object sender, RoutedEventArgs e) => Navigator.Navigate("AddAction.xaml");
 
-        private async Task runAction_ClickAsync(object sender, RoutedEventArgs e)
-        {
-            await actionService.ExecuteActionAsync("Test COM3");
-        }
-
         private void deleteAction_Click(object sender, RoutedEventArgs e)
         {
             var grid = (Grid)FindName("relayGrid");

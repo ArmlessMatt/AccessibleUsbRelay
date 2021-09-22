@@ -26,7 +26,7 @@ namespace UsbRelay.UI
                 var relay = service.RelayActions.FirstOrDefault(re => re.Guid == guid || re.DeviceName == devicename);
                 if (relay != null)
                 {
-                    Task.Run(() => service.ExecuteActionAsync(relay.Name)).Wait();
+                    Task.Run(() => service.ExecuteActionAsync(relay)).Wait();
                 }
                 Application.Current.Shutdown();
                 return;

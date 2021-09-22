@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using UsbRelay.Core.Entities;
+using UsbRelay.Core.Helpers;
 
 namespace UsbRelay.Core.Services
 {
@@ -33,11 +34,18 @@ namespace UsbRelay.Core.Services
             saveService.SaveRelays(RelayActions);
         }
 
-        public async Task ExecuteActionAsync(string name)
+        public async Task ExecuteActionAsync(RelayAction relay)
         {
-            RelayAction action = RelayActions.FirstOrDefault(action => action.Name == name);
-            if (action == null) return;
-            await Task.Run(() => RunAction(action));
+            if (relay == null) return;
+
+            var currentPorts = DeviceManagerHelper.GetComPortsName();
+            if (!currentPorts.Contains(relay.Port))
+            {
+                relay.Port = currentPorts.FirstOrDefault(port => port.Replace(" ","").Contains(relay.DeviceName));
+                if (relay.Port == null) return;
+                saveService.SaveRelays(RelayActions);
+            }
+            await Task.Run(() => RunAction(relay));           
         }
 
         private void RunAction(RelayAction action)
